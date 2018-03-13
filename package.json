@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "debug": "cross-env DEBUG=express:* node %NODE_DEBUG_OPTION% ./bin/www",
+    "clean": "rimraf ./public/ui",
     "heroku-postbuild": "npm run build-ui",
     "build-ui": "cd ./ui && npm install --only=dev && npm install && npm run build",
     "quick-build-ui": "cd ./ui && npm run build"
