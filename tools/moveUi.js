@@ -1,7 +1,7 @@
 var mv = require("mv");
 
 var source = './ui/build';
-var dest = './public/ui';
+var dest = './views/ui';
 mv(source, dest, {mkdirp: true}, function (err) {
     // done. it first created all the necessary directories, and then
     // tried fs.rename, then falls back to using ncp to copy the dir
