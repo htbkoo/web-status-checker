@@ -1,6 +1,16 @@
 .App {
-    text-align: center;
+    /*text-align: center;*/
     min-height: 100vh;
+}
+
+.outer-container {
+    padding: 1%;
+}
+
+.config-container {
+    padding: 1%;
+    background-color: cornsilk;
+    border-radius: 5px;
 }
 
 .App-logo {
@@ -32,14 +42,14 @@
     }
 }
 
-.red-bg{
+.red-bg {
     background-color: red;
 }
 
-.green-bg{
+.green-bg {
     background-color: green;
 }
 
-.orange-bg{
+.orange-bg {
     background-color: orange;
 }
