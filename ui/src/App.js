@@ -18,7 +18,7 @@ class App extends Component {
         this.state = {
             response: "Waiting for response",
             bgColour: "",
-            hostname: "http://localhost:3000/check",
+            hostname: "check",
             pageToCheckUrl: "https://www.npmjs.com/package/cors"
         };
 
@@ -60,6 +60,20 @@ class App extends Component {
             <div className={classes.join(" ")}>
                 <div className="outer-container">
                     <div className="config-container">
+                        <div>
+                            <TextField
+                                hintText="Enter the hostname"
+                                floatingLabelText="Hostname"
+                                fullWidth={true}
+
+                                value={this.state.hostname}
+                                onChange={(event) => {
+                                    this.setState({
+                                        hostname: event.target.value,
+                                    });
+                                }}
+                            />
+                        </div>
                         <div>
                             <TextField
                                 hintText="Enter the URL to check here"
