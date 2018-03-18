@@ -1,10 +1,16 @@
 var express = require('express');
+var cors = require('cors');
 var router = express.Router();
 
 const request = require('superagent');
 
+var corsOptions = {
+    origin: 'http://localhost:3001',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
 /* GET users listing. */
-router.get('/*', function (req, res, next) {
+router.get('/*', cors(corsOptions), function (req, res, next) {
     var url = req.param(0);
 
     if (url) {
