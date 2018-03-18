@@ -3,11 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "npm run build-ui && npm run local-start",
+    "local-start": "node ./bin/www",
     "debug": "cross-env DEBUG=express:* node %NODE_DEBUG_OPTION% ./bin/www",
-    "heroku-postbuild": "npm run prepare-ui",
-    "prepare-ui": "npm run clean && npm run build-ui",
-    "clean": "rimraf ./views/ui",
+    "heroku-postbuild": "npm run build-ui",
     "build-ui": "cd ./ui && npm install --only=dev && npm install && npm run build",
     "move-ui": "node ./tools/moveUi",
     "quick-build-ui": "cd ./ui && npm run build"
