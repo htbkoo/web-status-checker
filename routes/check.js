@@ -7,7 +7,7 @@ const request = require('superagent');
 router.get('/*', function (req, res, next) {
     var url = req.param(0);
 
-    if (url){
+    if (url) {
         request
             .get(url)
             .end((err, result) => {
@@ -42,6 +42,14 @@ router.get('/*', function (req, res, next) {
 
                 // Calling the end function will send the request
             });
+    } else {
+        res.json({
+            isSuccessful: false,
+            isEmpty: true,
+            meta: {
+                isError: false
+            },
+        });
     }
 });
 
