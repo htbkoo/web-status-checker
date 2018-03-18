@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import TextField from 'material-ui/TextField';
 import 'whatwg-fetch';
 
 import './App.css';
@@ -13,24 +14,29 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            bgColor: ""
+            bgColor: "",
+            hostname: "http://localhost:3000/check",
+            pageToCheckUrl: "https://www.npmjs.com/package/cors"
         };
 
         this.interval = 2000;
-        this.hostname = "http://localhost:3000/check";
-        this.pageToCheckUrl = "https://www.npmjs.com/package/cors";
-
-        this.url = `${this.hostname}/${this.pageToCheckUrl}`;
 
         this.checkUrl = this.checkUrl.bind(this);
+        this.generateUrl = this.generateUrl.bind(this);
     }
 
     componentDidMount() {
         setInterval(this.checkUrl, this.interval);
     }
 
+    generateUrl() {
+        return `${this.state.hostname}/${this.state.pageToCheckUrl}`;
+    }
+
     checkUrl() {
-        fetch(this.url)
+        let url = this.generateUrl();
+
+        fetch(url)
             .then(value => value.json())
             .then(json => json.isSuccessful ? COLOUR.GREEN : COLOUR.RED)
             .then(bgColor => this.setState({bgColor}))
@@ -45,7 +51,22 @@ class App extends Component {
 
         return (
             <div className={classes.join(" ")}>
+                <div className="outer-container">
+                    <div className="config-container">
+                        <TextField
+                            hintText="Enter the URL to check here"
+                            floatingLabelText="URL to check"
+                            fullWidth={true}
 
+                            value={this.state.pageToCheckUrl}
+                            onChange={(event) => {
+                                this.setState({
+                                    pageToCheckUrl: event.target.value,
+                                });
+                            }}
+                        />
+                    </div>
+                </div>
             </div>
         );
     }
