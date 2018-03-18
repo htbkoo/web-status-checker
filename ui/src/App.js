@@ -53,18 +53,34 @@ class App extends Component {
             <div className={classes.join(" ")}>
                 <div className="outer-container">
                     <div className="config-container">
-                        <TextField
-                            hintText="Enter the URL to check here"
-                            floatingLabelText="URL to check"
-                            fullWidth={true}
+                        <div>
+                            <TextField
+                                hintText="Enter the URL to check here"
+                                floatingLabelText="URL to check"
+                                fullWidth={true}
 
-                            value={this.state.pageToCheckUrl}
-                            onChange={(event) => {
-                                this.setState({
-                                    pageToCheckUrl: event.target.value,
-                                });
-                            }}
-                        />
+                                value={this.state.pageToCheckUrl}
+                                onChange={(event) => {
+                                    this.setState({
+                                        pageToCheckUrl: event.target.value,
+                                    });
+                                }}
+                            />
+                        </div>
+                        <div>
+                            <TextField
+                                floatingLabelText="URL built"
+                                fullWidth={true}
+                                disabled={true}
+
+                                value={this.generateUrl()}
+                                onChange={(event) => {
+                                    this.setState({
+                                        pageToCheckUrl: event.target.value,
+                                    });
+                                }}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
