@@ -3,16 +3,6 @@
     min-height: 100vh;
 }
 
-.outer-container {
-    padding: 1%;
-}
-
-.config-container {
-    padding: 1%;
-    background-color: cornsilk;
-    border-radius: 5px;
-}
-
 .App-logo {
     animation: App-logo-spin infinite 20s linear;
     height: 80px;
@@ -52,4 +42,18 @@
 
 .orange-bg {
     background-color: orange;
+}
+
+.outer-container {
+    padding: 1%;
+}
+
+.config-container {
+    padding: 1%;
+    background-color: cornsilk;
+    border-radius: 5px;
+}
+
+.withTopMargin {
+    margin-top: 1%;
 }

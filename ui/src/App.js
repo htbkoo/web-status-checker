@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
+import Divider from 'material-ui/Divider';
 import 'whatwg-fetch';
 
 import './App.css';
@@ -14,7 +16,8 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            bgColor: "",
+            response: "Waiting for response",
+            bgColour: "",
             hostname: "http://localhost:3000/check",
             pageToCheckUrl: "https://www.npmjs.com/package/cors"
         };
@@ -38,16 +41,20 @@ class App extends Component {
 
         fetch(url)
             .then(value => value.json())
-            .then(json => json.isSuccessful ? COLOUR.GREEN : COLOUR.RED)
-            .then(bgColor => this.setState({bgColor}))
+            .then(json => {
+                let response = `Response received: ${json}`;
+                let bgColour = json.isSuccessful ? COLOUR.GREEN : COLOUR.RED;
+                return this.setState({bgColour, response});
+            })
             .catch(reason => {
-                console.log(reason);
-                this.setState({bgColor: COLOUR.ORANGE});
+                let response = `Exception caught! Reason:\n ${reason}`;
+                let bgColour = COLOUR.ORANGE;
+                this.setState({bgColour, response});
             });
     }
 
     render() {
-        let classes = ["App", this.state.bgColor];
+        let classes = ["App", this.state.bgColour];
 
         return (
             <div className={classes.join(" ")}>
@@ -72,13 +79,32 @@ class App extends Component {
                                 floatingLabelText="URL built"
                                 fullWidth={true}
                                 disabled={true}
-
                                 value={this.generateUrl()}
-                                onChange={(event) => {
-                                    this.setState({
-                                        pageToCheckUrl: event.target.value,
-                                    });
-                                }}
+                            />
+                        </div>
+                        <div className="withTopMargin">
+                            <Divider/>
+                        </div>
+
+                        <div>
+                            <TextField
+                                floatingLabelText="Response"
+                                fullWidth={true}
+                                disabled={true}
+                                multiLine={true}
+                                value={this.state.response}
+                            />
+                        </div>
+                        <div className="withTopMargin">
+                            <Divider/>
+                        </div>
+
+                        <div className="withTopMargin">
+                            <RaisedButton
+                                label="Re-check"
+                                primary={true}
+
+                                onClick={this.checkUrl}
                             />
                         </div>
                     </div>
