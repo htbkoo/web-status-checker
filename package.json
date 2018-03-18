@@ -6,8 +6,8 @@
     "start": "node ./bin/www",
     "debug": "cross-env DEBUG=express:* node %NODE_DEBUG_OPTION% ./bin/www",
     "heroku-postbuild": "npm run prepare-ui",
-    "prepare-ui": "npm run clean && npm run build-ui && npm run move ui",
-    "clean": "rimraf ./public/ui",
+    "prepare-ui": "npm run clean && npm run build-ui",
+    "clean": "rimraf ./views/ui",
     "build-ui": "cd ./ui && npm install --only=dev && npm install && npm run build",
     "move-ui": "node ./tools/moveUi",
     "quick-build-ui": "cd ./ui && npm run build"
