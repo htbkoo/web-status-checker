@@ -42,12 +42,12 @@ class App extends Component {
         fetch(url)
             .then(value => value.json())
             .then(json => {
-                let response = `Response received: ${json}`;
+                let response = `Response received: ${JSON.stringify(json)}`;
                 let bgColour = json.isSuccessful ? COLOUR.GREEN : COLOUR.RED;
                 return this.setState({bgColour, response});
             })
             .catch(reason => {
-                let response = `Exception caught! Reason:\n ${reason}`;
+                let response = `Exception caught! Reason:\n ${JSON.stringify(reason)}`;
                 let bgColour = COLOUR.ORANGE;
                 this.setState({bgColour, response});
             });
