@@ -32,5 +32,5 @@
 
 ### Who do I talk to? ###
 
-* Repo owner or admin: me ([htbkoo](https://bitbucket.org/htbkoo/))
+* Repo owner or admin: me (htbkoo: [GitHub](https://github.com/htbkoo/web-status-checker) / [bitbucket](https://bitbucket.org/htbkoo/))
 * Other community or team contact: N/A
