@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "npm run build-ui && npm run local-start",
-    "local-start": "node ./bin/www",
+    "start": "node ./bin/www",
+    "build-start": "npm run build-ui && npm run start",
     "debug": "cross-env DEBUG=express:* node %NODE_DEBUG_OPTION% ./bin/www",
     "heroku-postbuild": "npm run build-ui",
     "build-ui": "cd ./ui && npm install --only=dev && npm install && npm run build",

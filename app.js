@@ -23,6 +23,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'ui/build')));
+app.use(express.static(path.join(__dirname, 'ui/build_fallback')));
 
 app.use('/', index);
 app.use('/check', check);
